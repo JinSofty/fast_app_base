@@ -1,6 +1,7 @@
 import 'package:fast_app_base/common/common.dart';
-import 'package:fast_app_base/common/constants.dart';
 import 'package:fast_app_base/common/widget/w_image_button.dart';
+import 'package:fast_app_base/screen/main/tab/stock/tab/f_my_stock.dart';
+import 'package:fast_app_base/screen/main/tab/stock/tab/f_todays_discovery.dart';
 import 'package:flutter/material.dart';
 
 class StockFragment extends StatefulWidget {
@@ -10,12 +11,20 @@ class StockFragment extends StatefulWidget {
   State<StockFragment> createState() => _StockFragmentState();
 }
 
-class _StockFragmentState extends State<StockFragment> {
+class _StockFragmentState extends State<StockFragment>
+    with SingleTickerProviderStateMixin {
+  int currentIndex = 0;
+
+  late final TabController tabController =
+      TabController(length: 2, vsync: this);
+
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
         SliverAppBar(
+          backgroundColor: context.appColors.roundedLayoutBackground,
+          pinned: true,
           actions: [
             ImageButton(
               imagePath: '$basePath/icon/stock_search.png',
@@ -38,12 +47,76 @@ class _StockFragmentState extends State<StockFragment> {
           ],
         ),
         SliverToBoxAdapter(
-          child: Container(
-            height: 1500,
-            color: Colors.red,
-          ),
-        )
+            child: Column(
+          children: [
+            title,
+            tabBar,
+            if (currentIndex == 0)
+              const MyStockFragment()
+            else
+              const TodaysDiscoveryFragment()
+          ],
+        ))
       ],
     );
   }
+
+  // TODO: implement widget
+  Widget get title => Row(
+        children: [
+          '토스증권'.text.size(24).bold.make(),
+          width10,
+          'S&P500'
+              .text
+              .size(12)
+              .color(context.appColors.lessImportantText)
+              .make(),
+          width10,
+          2101.29
+              .toComma()
+              .toString()
+              .text
+              .size(12)
+              .bold
+              .color(context.appColors.plus)
+              .make(),
+        ],
+      ).pOnly(left: 20);
+
+  Widget get tabBar => Container(
+        color: context.appColors.roundedLayoutBackground,
+        child: Column(
+          children: [
+            TabBar(
+              onTap: (index) {
+                setState(() {
+                  currentIndex = index;
+                });
+              },
+              indicatorSize: TabBarIndicatorSize.tab,
+              labelStyle: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+              labelPadding: const EdgeInsets.only(top: 20, bottom: 5),
+              indicatorPadding: const EdgeInsets.symmetric(vertical: 5),
+              indicatorColor: Colors.white,
+              controller: tabController,
+              tabs: [
+                '내주식'.text.make(),
+                '오늘의 발견'.text.make(),
+              ],
+            ).pOnly(left: 5, right: 5),
+            const Line(
+              //color: Colors.amber,
+              margin: EdgeInsets.symmetric(horizontal: 5),
+            ),
+          ],
+        ),
+      );
+
+  Widget get myAccount => Container(
+        color: Colors.red,
+      );
+  Widget get myStock => const Placeholder();
 }

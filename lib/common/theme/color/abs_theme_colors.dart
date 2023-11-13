@@ -32,7 +32,7 @@ abstract class AbstractThemeColors {
 
   Color get divider => const Color.fromARGB(255, 228, 228, 228);
 
-  Color get text => AppColors.darkGrey;
+  Color get text => const Color.fromARGB(255, 236, 229, 229);
 
   Color get hintText => AppColors.middleGrey;
 
@@ -58,5 +58,7 @@ abstract class AbstractThemeColors {
 
   Color get unreadColor => const Color.fromARGB(255, 48, 48, 48);
 
-  Color? get lessImportantText => AppColors.grey;
+  Color? get lessImportantText => const Color.fromARGB(255, 166, 160, 160);
+
+  Color? get plus => const Color.fromARGB(255, 179, 36, 48);
 }

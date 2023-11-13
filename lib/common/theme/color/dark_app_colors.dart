@@ -29,7 +29,7 @@ class DarkAppColors extends AbstractThemeColors {
   Color get iconButtonInactivate => const Color.fromARGB(255, 131, 131, 131);
 
   @override
-  Color get inActivate => const Color.fromARGB(255, 65, 68, 74);
+  Color get inActivate => const Color.fromARGB(255, 75, 77, 80);
 
   @override
   Color get text => Colors.white;
