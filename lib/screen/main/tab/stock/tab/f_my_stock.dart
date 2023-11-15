@@ -17,5 +17,6 @@ class MyStockFragment extends StatelessWidget {
 
   Widget get myStock => Container(
         color: Colors.amber,
+        height: 700,
       );
 }

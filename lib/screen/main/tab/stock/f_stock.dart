@@ -116,7 +116,7 @@ class _StockFragmentState extends State<StockFragment>
       );
 
   Widget get myAccount => Container(
-        color: Colors.red,
+        color: const Color.fromARGB(255, 99, 30, 25),
       );
   Widget get myStock => const Placeholder();
 }
