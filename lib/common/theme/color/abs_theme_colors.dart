@@ -61,4 +61,5 @@ abstract class AbstractThemeColors {
   Color? get lessImportantText => const Color.fromARGB(255, 166, 160, 160);
 
   Color? get plus => const Color.fromARGB(255, 179, 36, 48);
+  Color? get minus => const Color.fromARGB(255, 71, 102, 241);
 }
