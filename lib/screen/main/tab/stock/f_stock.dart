@@ -63,20 +63,16 @@ class _StockFragmentState extends State<StockFragment>
 
   // TODO: implement widget
   Widget get title => Row(
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           '토스증권'.text.size(24).bold.make(),
           width10,
-          'S&P500'
-              .text
-              .size(12)
-              .color(context.appColors.lessImportantText)
-              .make(),
+          'S&P500'.text.size(12).color(context.appColors.lessImportant).make(),
           width10,
           2101.29
               .toComma()
-              .toString()
               .text
-              .size(12)
+              .size(13)
               .bold
               .color(context.appColors.plus)
               .make(),
@@ -99,7 +95,7 @@ class _StockFragmentState extends State<StockFragment>
                 fontWeight: FontWeight.bold,
               ),
               labelPadding: const EdgeInsets.only(top: 20, bottom: 5),
-              indicatorPadding: const EdgeInsets.symmetric(vertical: 5),
+              indicatorPadding: const EdgeInsets.symmetric(horizontal: 20),
               indicatorColor: Colors.white,
               controller: tabController,
               tabs: [
@@ -114,9 +110,4 @@ class _StockFragmentState extends State<StockFragment>
           ],
         ),
       );
-
-  Widget get myAccount => Container(
-        color: const Color.fromARGB(255, 99, 30, 25),
-      );
-  Widget get myStock => const Placeholder();
 }
