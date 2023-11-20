@@ -19,4 +19,6 @@ void main() async {
       useOnlyLangCode: true,
       startLocale: const Locale('ko'),
       child: const App()));
+
+  //test dev
 }
